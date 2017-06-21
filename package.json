@@ -6,12 +6,16 @@
   "scripts": {
     "start": "webpack-dev-server --open"
   },
-  "babel":{
-    "presets": ["env", "react"]
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
   },
   "author": "ryuzaki644",
   "license": "ISC",
   "dependencies": {
+    "prop-types": "^15.5.10",
     "react": "^15.6.0",
     "react-dom": "^15.6.0"
   },
