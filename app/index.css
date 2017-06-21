@@ -6,6 +6,7 @@ body{
   max-width: 1200px;
   margin: 0 auto;
 }
+
 ul{
   padding: 0;
   margin: 10px;
@@ -15,10 +16,10 @@ a{
   text-decoration: none;
   color: teal;
 }
+
 li{
   list-style-type: none;
   margin-bottom: 10px;
-  text-decoration: none;
 }
 .languages{
   display: flex;
@@ -54,4 +55,17 @@ li{
   margin: 400px;
   padding: 150px;
   align-items: center;
+}
+
+.nav{
+  display: flex;
+  justify-content: center;
+}
+
+.active{
+  font-weight: bold;
+}
+
+.nav li{
+  margin-right: 15px;
 }
