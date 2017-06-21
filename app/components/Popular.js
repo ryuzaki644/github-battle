@@ -1,29 +1,28 @@
 const React = require('react')
 const propTypes = require('prop-types')
 
-class SelectLanguage extends React.Component {
-  render () {
-    const languages = ['All', 'Javascript', 'Python', 'clojure', 'Haskell']
-    return (
-      <ul className='languages'>
-        {languages.map(function (lang) {
-          return (
-            <li
-              style={lang === this.props.selectedLanguage ? {color: 'teal'} : null}
-              onClick={this.props.onSelect.bind(null, lang)}
-              key={lang}>
-              {lang}
-            </li>)
-        }, this)}
-      </ul>
-    )
-  }
+function SelectLanguage (props) {
+  const languages = ['All', 'Javascript', 'Python', 'clojure', 'Haskell']
+  return (
+    <ul className='languages'>
+      {languages.map(function (lang) {
+        return (
+          <li
+            style={lang === props.selectedLanguage ? {color: 'teal'} : null}
+            onClick={props.onSelect.bind(null, lang)}
+            key={lang}>
+            {lang}
+          </li>)
+      }, this)}
+    </ul>
+  )
 }
 
 SelectLanguage.propTypes = {
   selectedLanguage: propTypes.string.isRequired,
   onSelect: propTypes.func.isRequired
 }
+
 class Popular extends React.Component {
   constructor (props) {
     super(props)
