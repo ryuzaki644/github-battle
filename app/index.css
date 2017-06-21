@@ -2,3 +2,22 @@ body{
   font-family:  monospace, sans-serif;
   background: burlywood;
 }
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+ul{
+  padding: 0;
+}
+
+li{
+  list-style-type: none;
+}
+.languages{
+  display: flex;
+  justify-content: center;
+}
+.languages li{
+  margin: 10px;
+  font-weight: bold;
+}
