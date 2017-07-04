@@ -2,6 +2,38 @@ const React = require('react')
 const queryString = require('query-string')
 const api = require('../utils/api')
 const Link = require('react-router-dom').Link
+const PropTypes = require('prop-types')
+const PlayerPreview = require('./PlayerPreview')
+
+function Player (props) {
+  return (
+    <div>
+      <h1 className='header'>{props.label}</h1>
+      <h3 style={{textAlign: 'center'}}>{props.score}</h3>
+      <Profile info={props.profile} />
+    </div>
+  )
+}
+
+Player.propTypes = {
+  label: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  profile: PropTypes.object.isRequired
+}
+
+
+function Profile (props) {
+  const info = props.info
+  return (
+    <PlayerPreview avatar={info.avatar_url} username={info.login} >
+      <ul className='space-list-items'>
+        {info.name && <li>{info.name}</li>}
+        <li> Followers: {info.followers} </li>
+      </ul>
+    </PlayerPreview>
+  )
+}
+
 
 class Results extends React.Component {
   constructor (props) {
@@ -45,8 +77,7 @@ class Results extends React.Component {
           error: null,
           winner: results[0],
           loser: results[1],
-          loading: false,
-          draw: false
+          loading: false
         }
       })
     }.bind(this))
@@ -55,7 +86,6 @@ class Results extends React.Component {
     const error = this.state.error
     const winner = this.state.winner
     const loser = this.state.loser
-    const draw = this.state.draw
     const loading = this.state.loading
 
     if (loading === true) {
@@ -72,29 +102,18 @@ class Results extends React.Component {
       )
     }
 
-    if (draw === true) {
-      return (
-        <div>
-          <h1>Winner</h1>
-          <p>
-            {JSON.stringify(winner, null, 2)}
-          </p>
-          <h1>Winner</h1>
-          <p>{JSON.stringify(loser, null, 2)}</p>
-
-        </div>
-      )
-    }
-
     return (
-      <div>
-        <h1>Winner</h1>
-        <p>
-          {JSON.stringify(winner, null, 2)}
-        </p>
-        <h1>Loser</h1>
-        <p>{JSON.stringify(loser, null, 2)}</p>
-
+      <div className='row'>
+        <Player
+          label={winner === loser ? 'Draw' : 'Winner'}
+          score={winner.score}
+          profile={winner.profile}
+        />
+        <Player
+          label={winner === loser ? 'Draw' : 'Loser'}
+          score={loser.score}
+          profile={loser.profile}
+        />
       </div>
     )
   }

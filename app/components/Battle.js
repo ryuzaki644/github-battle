@@ -1,5 +1,5 @@
 const React = require('react')
-const propTypes = require('prop-types')
+const PropTypes = require('prop-types')
 const Link = require('react-router-dom').Link
 
 function PlayerPreview (props) {
@@ -22,11 +22,11 @@ function PlayerPreview (props) {
   )
 }
 
-PlayerPreview.propTypes = {
-  avatar: propTypes.string.isRequired,
-  username: propTypes.string.isRequired,
-  id: propTypes.string.isRequired,
-  onReset: propTypes.func.isRequired
+PlayerPreview.PropTypes = {
+  avatar: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  onReset: PropTypes.func.isRequired
 }
 
 class PlayerInput extends React.Component {
@@ -81,10 +81,10 @@ class PlayerInput extends React.Component {
   }
 }
 
-PlayerInput.propTypes = {
-  id: propTypes.string.isRequired,
-  label: propTypes.string.isRequired,
-  onSubmit: propTypes.func.isRequired
+PlayerInput.PropTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
 PlayerInput.defaultProps = {
