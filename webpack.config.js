@@ -1,12 +1,12 @@
 const path = require('path')
-const htmlWebpackPlugin = require('html-webpack-plugin')
-
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './app/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -14,7 +14,10 @@ module.exports = {
       {test: /\.(css)$/, use: ['style-loader', 'css-loader']}
     ]
   },
-  plugins: [new htmlWebpackPlugin({
+  devServer: {
+    historyApiFallback: true
+  },
+  plugins: [new HTMLWebpackPlugin({
     template: 'app/index.html'
   })]
 }
