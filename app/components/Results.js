@@ -21,7 +21,6 @@ Player.propTypes = {
   profile: PropTypes.object.isRequired
 }
 
-
 function Profile (props) {
   const info = props.info
   return (
@@ -33,7 +32,6 @@ function Profile (props) {
     </PlayerPreview>
   )
 }
-
 
 class Results extends React.Component {
   constructor (props) {
