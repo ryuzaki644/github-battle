@@ -27,8 +27,8 @@ function Profile (props) {
   return (
     <PlayerPreview avatar={info.avatar_url} username={info.login} >
       <ul className='space-list-items'>
-        {info.name && <li>{info.name}</li>}
-        <li> Followers: {info.followers} </li>
+        {info.name ? <li> Name: {info.name}</li> : <li>Name: {info.login}</li>}
+        {info.followers && <li>{info.followers} </li>}
       </ul>
     </PlayerPreview>
   )
@@ -52,23 +52,12 @@ class Results extends React.Component {
     api.battle([
       players.playerOneName,
       players.playerTwoName
-    ]).then(function (results) {
+    ]).then((results) => {
       if (results === null) {
         return this.setState(function () {
           return {
             error: 'Looks like there is an error check whether both players exist',
             loading: false
-          }
-        })
-      }
-      if (results[0].score === results[1].score) {
-        return this.setState(function () {
-          return {
-            error: null,
-            winner: results[0],
-            loser: results[1],
-            loading: false,
-            draw: true
           }
         })
       }
@@ -80,7 +69,7 @@ class Results extends React.Component {
           loading: false
         }
       })
-    }.bind(this))
+    })
   }
   render () {
     const error = this.state.error
