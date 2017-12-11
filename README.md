@@ -9,3 +9,12 @@ Battle between two github users and show popular repositories of Javascript, Has
 # API
   github API
 
+ # Clone and run
+
+
+      git clone https://github.com/ryuzaki644/github-battle
+      npm install
+      npm start
+
+
+ implementation of exercise from https://learn.tylermcginnis.com/p/reactjsfundamentals
